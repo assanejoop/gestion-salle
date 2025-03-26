@@ -1,0 +1,28 @@
+/*:root {*/
+/*  --color-gray-100: #202020;*/
+/*}*/
+
+
+.btn-menu-deroulant{
+  width: 159px;
+  height: 32px;
+  border-radius: 8px;
+  gap: 8px;
+  border-width: 1px;
+
+}
+
+.btn-create-calendar{
+  width: 89px;
+  height: 32px;
+  border-radius: 8px;
+  gap: 8px;
+  margin-top: 3px;
+  /*font-family: Inter;*/
+  font-weight: 500;
+  font-size: 16px;
+  /*line-height: 24px;*/
+  /*letter-spacing: 0%;*/
+  /*vertical-align: middle;*/
+
+}

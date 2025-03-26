@@ -1,0 +1,243 @@
+<!-- sidebar.component.html -->
+<aside class="lg:flex flex-col bg-primary border-r border-gray-200  w-[284px]  h-[1107px] overflow-y-auto ">
+
+    <!-- Header avec hamburger et titre -->
+    <div class="flex items-center justify-between p-2 ">
+      <img src="assets/images/logo.png" alt="">
+      <h1 class="text-3xl text-center px-6 text-secondary">Eyroom .</h1>
+      <button class="p-2 text-secondary" (click)="toggleSidebar()">
+
+        <img src="assets/images/arrows.png" alt="">
+      </button>
+
+
+   <!-- <h1 class="border bg-secondary btn-sidebar rounded-[10px] btn-sidebar px-6 text-[#051644] shadow-sm">Agenda</h1> -->
+      <div class="w-6"></div> <!-- Spacer pour équilibrer le header -->
+    </div>
+
+    <!-- Navigation principale -->
+    <nav class="flex-1 mx-2">
+      <!-- Menu principal -->
+      <div class="py-2">
+        <div class="flex items-center px-4 py-2 text-gray-500">
+          <span class="text-[#C4C4C4] font-medium text-xs" >MENU PRINCIPAL</span>
+<!--          <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">-->
+<!--            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />-->
+<!--          </svg>-->
+        </div>
+        <ul>
+          <li>
+            <a routerLink="/dashboard" routerLinkActive="bg-gray-100" class="flex items-center px-2 py-2 hover:bg-gray-50">
+              <span class="inline-flex mr-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"  style="fill: floralwhite;">
+                  <path d="M4 13h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v8a1
+                  1 0 0 0 1 1zm-1 7a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v4zm10 0a1 1 0 0 0 1 1h6a1
+                  1 0 0 0 1-1v-7a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v7zm1-10h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1z">
+                  </path>
+                </svg>
+              </span>
+              <span class="text-secondary  text-xs font-medium">Tableau de Bord</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/calendar" routerLinkActive="bg-indigo-600 text-white" class="flex items-center justify-between px-2 py-2 bg-indigo-600 text-white">
+              <div class="flex items-center">
+                <span class="inline-flex mr-3">
+                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: floralwhite;">
+                     <path d="M21 20V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0
+                   2-.897 2-2zM9 18H7v-2h2v2zm0-4H7v-2h2v2zm4 4h-2v-2h2v2zm0-4h-2v-2h2v2zm4 4h-2v-2h2v2zm0-4h-2v-2h2v2zm2-5H5V7h14v2z"></path></svg>
+
+                </span>
+                <span class="text-secondary  text-xs font-medium ">Calendrier</span>
+              </div>
+              <button class="text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="1"></circle>
+                  <circle cx="19" cy="12" r="1"></circle>
+                  <circle cx="5" cy="12" r="1"></circle>
+                </svg>
+              </button>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/rooms" routerLinkActive="bg-gray-100" class="flex items-center px-2 py-2 hover:bg-white-50">
+              <span class="inline-flex mr-3">
+              <img src="assets/images/meeting.svg" alt="meeting-icon">
+              </span>
+              <span class="text-secondary font-medium text-xs">Gestion des Salles de réunions</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/notifications" routerLinkActive="bg-gray-100" class="flex items-center px-2 py-2 hover:bg-gray-50">
+              <span class="inline-flex mr-3">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" style="fill: floralwhite;" >
+                  <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"></path>
+                </svg>
+
+              </span>
+              <span class="text-secondary  text-xs font-medium">Notifications</span>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- Organisation -->
+      <div class="py-2">
+        <div class="flex items-center px-4 py-2 text-gray-500">
+          <span class="text-[#C4C4C4] font-medium text-xs">ORGANISATION</span>
+<!--          <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">-->
+<!--            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />-->
+<!--          </svg>-->
+        </div>
+        <ul>
+          <li>
+            <a routerLink="/contacts" routerLinkActive="bg-gray-100" class="flex items-center px-2 py-2 hover:bg-gray-50 " >
+              <span class="inline-flex mr-3">
+                  <img src="assets/images/noteContact.svg" alt="noteContact">
+              </span>
+              <span class="text-secondary  text-xs font-medium">Contacts</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/teams" routerLinkActive="bg-gray-100" class="flex items-center px-2 py-2 hover:bg-gray-50">
+              <span class="inline-flex mr-3">
+                 <img src="assets/images/teams.svg" alt="teams">
+              </span>
+              <span class="text-secondary  text-xs font-medium">Équipes</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/meetings" routerLinkActive="bg-gray-100" class="flex items-center px-2 py-2 hover:bg-gray-50">
+              <span class="inline-flex mr-3">
+                <img src="assets/images/meet.png" alt="teams">
+              </span>
+              <span class="text-secondary  text-xs font-medium">Mes reunions</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/reports" routerLinkActive="bg-gray-100" class="flex items-center px-2 py-2 hover:bg-gray-50">
+              <span class="inline-flex mr-3">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" style="fill: floralwhite;">
+                  <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path>
+                </svg>
+              </span>
+              <span class="text-secondary  text-xs font-medium">Rapports de réunion</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Équipe -->
+      <div class="py-2">
+        <div class="flex items-center px-4 py-2 text-gray-500">
+          <span class="text-secondary  text-xs font-medium">Équipe</span>
+          <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="flex items-center px-2 py-2">
+          <!-- Avatars d'équipe -->
+          <div class="flex -space-x-2">
+            <img class="w-8 h-8 rounded-full border-2 border-white" src="assets/images/avatar1.png" alt="Avatar membre d'équipe 1">
+            <img class="w-8 h-8 rounded-full border-2 border-white" src="assets/images/avatar2.png" alt="Avatar membre d'équipe 2">
+            <img class="w-8 h-8 rounded-full border-2 border-white" src="assets/images/avatar3.png" alt="Avatar membre d'équipe 3">
+            <img class="w-8 h-8 rounded-full border-2 border-white" src="assets/images/avatar4.png" alt="Avatar membre d'équipe 3">
+
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Personnel -->
+      <div class="py-2">
+        <div class="flex items-center px-4 py-2 text-xs text-gray-500">
+          <span class="text-[#C4C4C4] font-medium text-xs">ESPACE PERSONNEL</span>
+
+        </div>
+        <ul>
+          <li>
+            <a routerLink="/notes" routerLinkActive="bg-gray-100" class="flex items-center px-2 py-2 hover:bg-gray-50">
+              <span class="inline-flex mr-3">
+               <img src="assets/images/note.png" alt="">
+              </span>
+              <span class="text-secondary  text-xs font-medium">Notes</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/todo" routerLinkActive="bg-gray-100" class="flex items-center px-2 py-2 hover:bg-gray-50">
+              <span class="inline-flex mr-3">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="#4CAF50" >
+                  <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8.29 13.29a.996.996 0 01-1.41 0L5.71 12.7a.996.996 0 111.41-1.41L10 14.17l6.88-6.88a.996.996 0 111.41 1.41l-7.58 7.59z"></path>
+                </svg>
+              </span>
+              <span class="text-secondary  text-xs font-medium">To-do List</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/events" routerLinkActive="bg-gray-100" class="flex items-center px-2 py-2 hover:bg-gray-50">
+              <span class="inline-flex mr-3">
+             <img src="assets/images/planing.svg" alt="">
+              </span>
+              <span class="text-secondary  text-xs font-medium">Planification d'événement</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Général -->
+      <div class="py-2 ">
+        <div class="px-4 py-2 text-gray-500">
+          <span class="text-[#C4C4C4] font-medium text-xs">GENERAL</span>
+        </div>
+        <ul>
+          <li>
+            <a routerLink="/general-settings" routerLinkActive="bg-gray-100" class="flex items-center px-2 py-2 hover:bg-gray-50">
+              <span class="inline-flex mr-3">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" style="fill: floralwhite;">
+                  <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.488.488 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 00-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"></path>
+                </svg>
+              </span>
+              <span class="text-secondary  text-xs font-medium">Paramètres</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/help" routerLinkActive="bg-gray-100" class="flex items-center px-2 py-2 hover:bg-gray-50">
+              <span class="inline-flex mr-3">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" style="fill: floralwhite;">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"></path>
+                </svg>
+              </span>
+              <span class="text-secondary  text-xs font-medium">Aide et support</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/trash" routerLinkActive="bg-gray-100" class="flex items-center px-2 py-2 hover:bg-gray-50">
+              <span class="inline-flex mr-3">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" style="fill: floralwhite;">
+                  <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path>
+                </svg>
+              </span>
+              <span class="text-secondary font-medium text-xs">Corbeille</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/apps" routerLinkActive="bg-gray-100" class="flex items-center px-2 py-2 hover:bg-gray-50">
+              <span class="inline-flex mr-3">
+               <img src="assets/images/app.png" alt="image">
+              </span>
+              <span class="text-secondary font-medium text-xs">Apps</span>
+            </a>
+          </li>
+        </ul>
+        <div class=" py-4 px-2 border-t border-gray-200 flex">
+          <span class="inline-flex justify-between " >
+          <img src="assets/images/persona.png "  alt="image">
+          </span>
+          <span class="text-secondary font-medium text-center mt-6 ml-4 text-xs"> Cheikh Gueye</span>
+        </div>
+
+      </div>
+
+    </nav>
+  </aside>

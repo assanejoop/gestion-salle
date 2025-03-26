@@ -1,0 +1,149 @@
+<div class="bg-white flex flex-col h-screen">
+  <!-- Header du calendrier -->
+  <div class="p-4 border-gray-200 flex justify-between items-center pt-3 py-8">
+    <div>
+      <h1 class="text-[32px]  font-medium">Calendrier</h1>
+      <p class="text-xs text-gray-600">Planifiez vos réunions en toute simplicité et optimisez votre emploi du temps.</p>
+    </div>
+
+    <div class="flex space-x-4">
+      <!-- Boutons de navigation -->
+      <div class="flex items-center gap-2">
+        <button class="p-2 rounded-full hover:bg-gray-100">
+          <img src="assets/images/loop.png" alt="">
+        </button>
+        <button class="p-2 rounded-full hover:bg-gray-100">
+          <img src="assets/images/question.png" alt="">
+        </button>
+        <button class="p-2 rounded-full hover:bg-gray-100">
+        <img src="assets/images/share.png">
+        </button>
+
+        <button class="p-2 rounded-[8px] hover:bg-gray-100 border">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button class="p-2 rounded-[8px]  hover:bg-gray-100 border ">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+
+        <div class="relative inline-block ">
+          <!-- Bouton du dropdown -->
+          <button (click)="toggleDropdown()" class=" bg-gray-100 text-black  flex justify-between items-center btn-menu-deroulant px-4">
+            {{ selectedOption }}
+
+            <img src="assets/images/arrow-down.png" alt="image" >
+          </button>
+
+          <!-- Menu déroulant -->
+          <div *ngIf="isOpen" class="absolute mt-2 w-full bg-white border rounded-lg shadow-lg">
+            <button
+              *ngFor="let option of options"
+              (click)="selectOption(option)"
+              class="block w-full ">
+              {{ option }}
+            </button>
+          </div>
+        </div>
+
+        <!-- <span class="mx-4 font-medium text-[16px]" >Cette semaine</span> -->
+      </div>
+
+      <!-- Bouton Créer -->
+      <button class="bg-[#FF0059] text-white  text-[16px] btn-create-calendar" >
+         + Créer
+      </button>
+    </div>
+  </div>
+
+  <!-- Tabs de navigation -->
+  <div class="flex border-b border-gray-200 ">
+    <button class="px-4 py-3 flex items-center border-b-2 border-transparent hover:border-[#202020]">
+      <img src="assets/images/calendar.svg" alt="imageCalendar"/>
+      <span class="px-2 text-xs" >Tous les agendas </span>
+    </button>
+    <button class="px-4 py-3 flex items-center border-b-2 border-transparent hover:border-[#202020]">
+  <img src="assets/images/star.svg" alt="star">
+      <span class="px-2 text-xs">Événements</span>
+    </button>
+    <button class="px-4 py-3 flex items-center border-b-2 border-transparent hover:border-[#202020]">
+      <img src="assets/images/meets.png" alt="star">
+      <span class="px-2 text-xs" >Réunions </span>
+    </button>
+    <button class="px-4 py-3 flex items-center border-b-2 border-transparent hover:border-[#202020]">
+      <img src="assets/images/remimber.svg" alt="star">
+      <span class="px-2 text-xs" >Rappels </span>
+
+    </button>
+    <button class="px-4 py-3 text-gray-400">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Navigation secondaire -->
+  <div class="flex px-4 py-6 space-x-4 border-b border-gray-200">
+    <button class="px-4 py-1  bg-gray-50 text-black rounded-md">Aujourd'hui</button>
+    <button class="px-4 py-1 text-gray-600">Mars 2025</button>
+  </div>
+
+  <!-- Corps du calendrier -->
+  <div class="flex-1 overflow-auto">
+    <div class="grid grid-cols-8 h-full border-b border-gray-200">
+      <!-- Colonne des heures -->
+      <div class="border-r border-gray-200">
+        <div class="h-16 text-xs text-gray-500 text-right pr-2 pt-2">GMT+00</div>
+        <div *ngFor="let time of timeSlots" class="h-24 border-t border-gray-200 text-xs text-gray-500 text-right pr-2 pt-2">
+          {{ time }}
+          <div class="text-xs">AM</div>
+        </div>
+      </div>
+
+      <!-- Colonnes des jours -->
+      <div *ngFor="let day of days" class="border-r border-gray-200">
+
+        <!-- En-tête du jour -->
+        <div class="h-16 flex flex-col items-center justify-center ">
+          <div class="text-sm text-gray-600">{{ formatDayName(day) }}</div>
+          <div [ngClass]="{'bg-rose-500 text-white rounded-full w-8 h-8 flex items-center justify-center': isToday(day), 'text-lg font-bold': !isToday(day)}">
+            {{ formatDayNumber(day) }}
+          </div>
+        </div>
+
+        <!-- Cellules pour chaque heure -->
+        <div *ngFor="let time of timeSlots" class="h-24 border-t border-gray-200 relative">
+          <!-- Événements -->
+          <div *ngFor="let event of getEventsForDateAndTime(day, time)"
+               class="absolute top-2 left-2 right-2 rounded-md px-2 py-1 text-xs"
+               [ngClass]="event.color">
+            <div class="flex items-center">
+              <span *ngIf="event.type === 'presentation'" class="w-2 h-2 bg-green-600 rounded-full mr-1"></span>
+              <span *ngIf="event.type === 'meeting'" class="w-2 h-2 bg-blue-600 rounded-full mr-1"></span>
+              <span *ngIf="event.type === 'generate'" class="w-2 h-2 bg-yellow-600 rounded-full mr-1"></span>
+              <span *ngIf="event.type === 'lunch'" class="w-2 h-2 bg-blue-600 rounded-full mr-1"></span>
+              <span *ngIf="event.type === 'other'" class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
+              {{ event.title }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pied de page - Liste des participants -->
+<!--  <div class="flex items-center p-2 border-t border-gray-200">-->
+<!--    <div class="flex -space-x-2 mr-4">-->
+<!--      <div *ngFor="let participant of participants" class="w-8 h-8 rounded-full border-2 border-white bg-gray-200 overflow-hidden">-->
+<!--        <img *ngIf="participant.avatar" [src]="participant.avatar" alt="Avatar" class="w-full h-full object-cover">-->
+<!--        <div *ngIf="!participant.avatar" class="flex items-center justify-center w-full h-full bg-indigo-500 text-white text-xs">-->
+<!--          {{ participant.name.charAt(0) }}-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <button class="text-blue-600 text-sm font-medium">Inviter</button>-->
+<!--  </div>-->
+<!--</div>-->
